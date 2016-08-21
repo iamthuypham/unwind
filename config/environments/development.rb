@@ -38,4 +38,7 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+  
+  #URL default
+  config.action_mailer.default_url_options = { host: 'ruby-tutorial-tpham045.c9users.io', port: 8080 }
 end
