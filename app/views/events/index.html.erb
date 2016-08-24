@@ -3,12 +3,16 @@
   <div class="col-md-8">
     <% @events.each do |event| %>
     </br>
-      <%= event.name %>
+      <%= link_to event.name, event_path(event) %>
       </br>
       <small>Start: <%= event.startdate %></small>
+      </br>
       <small>End: <%= event.enddate %></small>
     <% end %>
   </div>
-<div class="col-md-4">
-    <%= link_to "New Event", new_event_path, class: 'btn btn-success' %>
+  <% if current_user %>
+    <div class="col-md-4">
+      <%= link_to "New Event", new_event_path, class: 'btn btn-success' %>
+    </div>
+  <% end %>
 </div>
