@@ -1,0 +1,14 @@
+<h1>All Events</h1>
+<div class="row">
+  <div class="col-md-8">
+    <% @events.each do |event| %>
+    </br>
+      <%= event.name %>
+      </br>
+      <small>Start: <%= event.startdate %></small>
+      <small>End: <%= event.enddate %></small>
+    <% end %>
+  </div>
+<div class="col-md-4">
+    <%= link_to "New Event", new_event_path, class: 'btn btn-success' %>
+</div>

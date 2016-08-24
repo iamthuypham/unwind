@@ -1,0 +1,25 @@
+<%= form_for [event] do |f| %>
+   <% if event.errors.any? %>
+     <div class="alert alert-danger">
+       <h4><%= pluralize(event.errors.count, "error") %>.</h4>
+       <ul>
+         <% event.errors.full_messages.each do |msg| %>
+           <li><%= msg %></li>
+         <% end %>
+       </ul>
+     </div>
+   <% end %>
+   <%= form_group_tag(event.errors[:name]) do %>
+     <%= f.label :name %>
+     <%= f.text_field :name, class: 'form-control', placeholder: "Memorable Event Name" %>
+     
+     <%= f.label :startdate %>
+     <%= f.text_field :startdate, class: 'form-control', placeholder: "##/##/####"%>
+     
+     <%= f.label :enddate %>
+     <%= f.text_field :enddate, class: 'form-control', placeholder: "##/##/####" %>
+  <% end %>
+   <div class="form-group">
+     <%= f.submit "Save",  class: 'btn btn-success' %>
+   </div>
+<% end %>
