@@ -9,8 +9,8 @@
     <%= @event.enddate %>
   </div>
   <div class="col-md-4">
-    <% if current_user %>
-      <%= link_to "Delete Topic", @event, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this event?' } %>
+    <% if current_role == 'planner' %>
+      <%= link_to "Delete", @event, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this event?' } %>
     <% end %>
    </div>
 </div>
