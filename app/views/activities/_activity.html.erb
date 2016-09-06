@@ -1,10 +1,13 @@
-
-  <div class="media">
-    <div class="media-body">
-      <h4 class="media-heading">
-         <%= link_to activity.name, event_activity_path(activity.event, activity) %>
-         <%= activity.starttime  %>
-         <%= activity.completed  %>
-      </h4>
-    </div>
+<div class="media">
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to activity.name, event_activity_path(activity.event, activity) %>
+      <%= activity.starttime  %>
+      <% if activity.completed  %>
+        Completed
+      <% else %>
+        <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+      <% end %>
+    </h4>
   </div>
+</div>

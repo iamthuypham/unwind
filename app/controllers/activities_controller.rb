@@ -12,9 +12,9 @@ class ActivitiesController < ApplicationController
     end
   end
   def update
-    @activity = Activity.find(params[:id])
-    @activity.assign_attributes(activity_params)
-
+    @event = Event.find(params[:event_id])
+    @activity = @event.activities.find(params[:id])
+    @activity.completed = true
      if @activity.save
       flash[:notice] = "Activity was updated successfully."
       redirect_to @activity.event
