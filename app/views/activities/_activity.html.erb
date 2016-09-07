@@ -1,13 +1,14 @@
-<div class="media">
-  <div class="media-body">
-    <h4 class="media-heading">
-      <%= link_to activity.name, event_activity_path(activity.event, activity) %>
-      <%= activity.starttime  %>
-      <% if activity.completed  %>
-        Completed
-      <% else %>
-        <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
-      <% end %>
-    </h4>
-  </div>
+<div class="col-md-2">
+  <%= activity.starttime.strftime('%l:%M %P')  %>
 </div>
+<div class="col-md-4">
+  <%= link_to activity.name, event_activity_path(activity.event, activity) %>
+</div>  
+<div class="col-md-2">
+  <% if activity.completed  %>
+    <p class= 'glyphicon glyphicon-ok'></p>
+  <% else %>
+    <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+  <% end %>
+</div>
+

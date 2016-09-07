@@ -16,7 +16,6 @@ class ActivitiesController < ApplicationController
     @activity = @event.activities.find(params[:id])
     @activity.completed = true
      if @activity.save
-      flash[:notice] = "Activity was updated successfully."
       redirect_to @activity.event
      else
        flash.now[:alert] = "There was an error saving the activity. Please try again."
