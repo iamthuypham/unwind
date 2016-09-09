@@ -46,6 +46,15 @@ class EventsController < ApplicationController
        render :show
      end
   end
+  
+  def show_weather_data        
+    @weather = ForecastIO.forecast(34.23, -119.673) #Hardcode as an example of weather data. This will be replaced next commit
+    @current_weather = @weather.currently
+    @current_weather.summary
+  end
+  
+  helper_method :show_weather_data
+  
   private
  
    def event_params

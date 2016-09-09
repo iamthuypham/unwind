@@ -7,6 +7,9 @@
     <%= @event.startdate %>
     </br>
     <%= @event.enddate %>
+    </br>
+    <!--Example weather data -->
+    Weather will be <strong><%= show_weather_data %></strong> 
   </div>
   <div class="col-md-4">
     <% if current_role == 'planner' %>

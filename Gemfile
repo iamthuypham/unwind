@@ -45,3 +45,5 @@ source 'https://rubygems.org'
  gem "chartkick"
  # Used to easy change format of default date 00:00:00 UTC ...
  gem 'groupdate'
+ # Used to retrieve forecast info
+ gem 'forecast_io'
