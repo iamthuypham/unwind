@@ -9,6 +9,7 @@ class EventsController < ApplicationController
 
   def show
     @event = Event.find(params[:id])
+    @current_weather = Event.weather(@event).currently
   end
 
   def create
@@ -47,17 +48,9 @@ class EventsController < ApplicationController
      end
   end
   
-  def show_weather_data        
-    @weather = ForecastIO.forecast(34.23, -119.673) #Hardcode as an example of weather data. This will be replaced next commit
-    @current_weather = @weather.currently
-    @current_weather.summary
-  end
-  
-  helper_method :show_weather_data
-  
   private
  
    def event_params
-     params.require(:event).permit(:name, :startdate, :enddate)
+     params.require(:event).permit(:name, :startdate, :enddate, :location)
    end
 end

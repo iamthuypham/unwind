@@ -75,6 +75,7 @@ GEM
       faraday
       hashie
       multi_json
+    geocoder (1.4.0)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
     groupdate (3.0.1)
@@ -210,6 +211,7 @@ DEPENDENCIES
   faker
   figaro (= 1.0)
   forecast_io
+  geocoder
   groupdate
   jquery-rails
   pg

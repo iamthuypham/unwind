@@ -4,6 +4,7 @@
     <% @events.each do |event| %>
     </br>
       <%= link_to event.name, event_path(event) %>
+      - <%= event.location %>
       </br>
       <small>Start: <%= event.startdate %></small>
       </br>

@@ -47,3 +47,5 @@ source 'https://rubygems.org'
  gem 'groupdate'
  # Used to retrieve forecast info
  gem 'forecast_io'
+ # Used to retrieve lat and lng based on location
+ gem 'geocoder'
