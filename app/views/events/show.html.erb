@@ -4,16 +4,20 @@
     </br>
     Your current role is <%= current_role %>
     </br>
-    <%= @event.startdate %>
+    <%= @event.startdate.strftime('%D') %>
     </br>
-    <%= @event.enddate %>
+    <%= @event.enddate.strftime('%D') %>
     </br>
+    <strong>Location:</strong>
     <%= @event.location %>
     </br>
     <!--Example weather data -->
-    Weather: <strong><%= @current_weather.summary %> and <%= @current_weather.temperature %></strong> 
-    
-    <%= @weather_on%>
+    <div>
+      <strong>Weather:</strong>
+      <p>Summary: <%= @current_weather.summary %></p>
+      <p>Temperature: <%= @current_weather.temperature %></p>
+      <p>Wind Speed: <%= @current_weather.windSpeed %></p>
+    </div>
   </div>
   <div class="col-md-4">
     <% if current_role == 'planner' %>
