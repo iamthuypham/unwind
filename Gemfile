@@ -49,3 +49,5 @@ source 'https://rubygems.org'
  gem 'forecast_io'
  # Used to retrieve lat and lng based on location
  gem 'geocoder'
+ # Used to make an API call
+ gem 'httparty', '~> 0.13'

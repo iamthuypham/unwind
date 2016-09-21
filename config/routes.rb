@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] 
   
   resources :events do
-    resources :activities, only: [:create,:update, :destroy]
+    resources :activities, only: [:create,:update, :destroy, :show]
   end
   # You can have the root of your site routed with "root"
   root 'welcome#index'
