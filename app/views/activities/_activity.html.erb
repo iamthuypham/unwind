@@ -4,11 +4,16 @@
 <div class="col-md-4">
   <%= link_to activity.name, event_activity_path(activity.event, activity) %>
 </div>  
-<div class="col-md-2">
+<div class="col-md-3">
   <% if activity.completed  %>
     <p class= 'glyphicon glyphicon-ok'></p>
   <% else %>
-    <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+    <% if current_role == 'planner' || current_role == 'helper' %>
+      <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+    <% else %>
+      Your current role is <%= current_role %>.
+      Want to help <%= @event.user.email %> this event?
+    <% end %>
   <% end %>
 </div>
 
