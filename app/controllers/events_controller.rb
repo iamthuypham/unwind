@@ -24,6 +24,11 @@ class EventsController < ApplicationController
       render :new
     end
   end
+  
+  def edit
+    @event = Event.find(params[:id])
+  end
+  
   def update
     @event = Event.find(params[:id])
     @event.assign_attributes(event_params)
