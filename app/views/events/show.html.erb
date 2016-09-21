@@ -4,9 +4,12 @@
     </br>
     Your current role is <%= current_role %>
     </br>
-    <%= @event.startdate.strftime('%D') %>
-    </br>
-    <%= @event.enddate.strftime('%D') %>
+    <% if @event.startdate == @event.enddate %>
+      One-day event </br>
+      <%= @event.startdate.strftime('%b %e, %Y') %>
+    <% else %>
+      <%= @event.startdate.strftime('%b %e, %Y') %> - <%= @event.enddate.strftime('%b %e, %Y') %>
+    <% end %>
     </br>
     <strong>Location:</strong>
     <%= @event.location %>
