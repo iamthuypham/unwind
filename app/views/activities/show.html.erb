@@ -1,3 +1,11 @@
-<h1>Activities#show</h1>
-
-<%= hotels_as_json(@hotel_list) %>
+<div class="row">
+  <div class="col-md-6">
+    <small><%= @activity.event.name %></small>
+    <h1><%= @activity.name %></h1>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-8">
+    <%= hotels_as_json(@hotel_list) %>
+  </div>
+</div>

@@ -23,6 +23,10 @@ class ActivitiesController < ApplicationController
       redirect_to @activity.event
     end
   end
+  def edit
+    @event = Event.find(params[:event_id])
+    @activity = @event.activities.find(params[:id])
+  end
   def update
     @event = Event.find(params[:event_id])
     @activity = @event.activities.find(params[:id])
