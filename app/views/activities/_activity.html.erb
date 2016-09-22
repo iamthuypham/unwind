@@ -5,18 +5,24 @@
   <%= link_to activity.name, event_activity_path(activity.event, activity) %>
 </div>  
 <div class="col-md-3">
-  <% if activity.completed  %>
-    <p class= 'glyphicon glyphicon-ok'></p>
-  <% else %>
+  
     <% if current_role == 'planner' %>
       <%= link_to "Edit", edit_event_activity_path(activity.event, activity),  class: 'btn btn-default' %>
       <%= link_to "Delete", event_activity_path(activity.event, activity), method: :delete, class: 'btn btn-danger' %>
-    <% elsif current_role == 'planner' || current_role == 'helper' %> 
-      <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+      <% if activity.completed  %>
+        <p class= 'glyphicon glyphicon-ok'></p>
+      <% else %>
+        <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+      <% end %>
+    <% elsif current_role == 'helper' %> 
+      <% if activity.completed  %>
+        <p class= 'glyphicon glyphicon-ok'></p>
+      <% else %>
+        <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+      <% end %>
     <% else %>
       Your current role is <%= current_role %>.
       Want to help <%= @event.user.email %> this event?
     <% end %>
-  <% end %>
 </div>
 
