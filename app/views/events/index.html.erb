@@ -6,9 +6,11 @@
       <%= link_to event.name, event_path(event) %>
       - <%= event.location %>
       </br>
-      <small>Start: <%= event.startdate %></small>
-      </br>
-      <small>End: <%= event.enddate %></small>
+      <% if event.startdate == event.enddate %>
+        <%= event.startdate.strftime('%b %e, %Y') %>
+      <% else %>
+        <%= event.startdate.strftime('%b %e, %Y') %> - <%= event.enddate.strftime('%b %e, %Y') %>
+      <% end %>
     <% end %>
   </div>
   <% if current_user %>

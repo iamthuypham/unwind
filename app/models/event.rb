@@ -10,6 +10,7 @@ class Event < ActiveRecord::Base
     event.geocode
     lat = event.latitude
     lng = event.longitude
-    @weather = ForecastIO.forecast(lat, lng)
+    time = event.startdate.to_time.iso8601
+    @weather = ForecastIO.forecast(lat, lng, time: time)
   end
 end
