@@ -4,8 +4,8 @@
     </br>
     Your current role is <%= current_role %>
     </br>
-    <% if @event.startdate == @event.enddate %>
-      One-day event </br>
+    <%= @event.length %>
+    <% if @event.length == 'One Day' %>
       <%= @event.startdate.strftime('%b %e, %Y') %>
     <% else %>
       <%= @event.startdate.strftime('%b %e, %Y') %> - <%= @event.enddate.strftime('%b %e, %Y') %>
