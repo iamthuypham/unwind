@@ -1,8 +1,6 @@
-<% if activity.event.length == 'Multiple Days' %>
-  <div class="col-md-2">
-    <%= activity.date.strftime('%^b %e') %>
-  </div>
-<% end %>
+<div class="col-md-2">
+  <%= activity.date.strftime('%^b %e') %>
+</div>
 <div class="col-md-2">
   <%= activity.starttime.strftime('%l:%M %P')  %>
 </div>
