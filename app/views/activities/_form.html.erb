@@ -1,6 +1,10 @@
  <%= form_for [event, activity] do |f| %>
    <div class="form-group">
-     <div class="col-md-2">
+        <div class="col-md-2" >
+          <%= f.label :date, class: 'sr-only' %>
+          <%= f.text_field :date, class: 'form-control', type: 'date', :disabled => event.length == 'One Day' %>
+        </div>
+      <div class="col-md-2">
         <%= f.label :starttime, class: 'sr-only'  %>
         <%= f.text_field :starttime, class: 'form-control', placeholder: "Time" %>
       </div>
