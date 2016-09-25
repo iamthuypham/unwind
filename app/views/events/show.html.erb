@@ -1,3 +1,5 @@
+
+<div id="site-canvas">
 <div class="row">
   <div class="col-md-8">
     <h1><%= @event.name %></h1>
@@ -14,13 +16,7 @@
     <strong>Location:</strong>
     <%= @event.location %>
     </br>
-    <!--Example weather data -->
-    <div>
-      <strong>Weather:</strong>
-      <p>Summary: <%= @current_weather.summary %></p>
-      <p>Temperature: <%= @current_weather.temperature %></p>
-      <p>Wind Speed: <%= @current_weather.windSpeed %></p>
-    </div>
+   
   </div>
   <div class="col-md-4">
     <% if current_role == 'planner' %>
@@ -42,4 +38,17 @@
       <%= render 'activities/form', event: @event, activity: Activity.new %>
     </div>
   <% end %>
+</div>
+<a class="toggle-nav" id="big-sexy">Toggle Nav</a>
+
+<div id="site-menu">
+   <!--Example weather data -->
+    <div>
+      <strong>Weather:</strong>
+      <p>Summary: <%= @current_weather.summary %></p>
+      <p>Temperature: <%= @current_weather.temperature %></p>
+      <p>Wind Speed: <%= @current_weather.windSpeed %></p>
+    </div>
+</div>
+
 </div>
