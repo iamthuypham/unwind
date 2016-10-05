@@ -15,29 +15,40 @@
 //= require turbolinks
  //= require bootstrap
 //= require_tree .
+//= require twitter/typeahead
+
+//= require twitter/typeahead.min
 /*global $*/
-/*====================================
-=            ON DOM READY            =
-====================================*/
+/*
+
+NOW AS A SUPER EASY TO USE PLUGIN:
+http://panels.scotch.io
+
+*/
+
+
 $(function() {
-  $('.toggle-nav').click(function() {
-    // Calling a function in case you want to expand upon this.
-    toggleNav();
+
+  var special = ['reveal', 'top', 'boring', 'perspective', 'extra-pop'];
+
+  // Toggle Nav on Click
+  $('.hearts a').click(function() {
+
+    var transitionClass = $(this).data('transition');
+
+    if ($.inArray(transitionClass, special) > -1) {
+      $('body').removeClass();
+      $('body').addClass(transitionClass);
+    } else {
+      $('body').removeClass();
+      $('#site-canvas').removeClass();
+      $('#site-canvas').addClass(transitionClass);
+    }
+
+    $('#site-wrapper').toggleClass('show-nav');
+
+    return false;
+
   });
+
 });
-
-
-/*========================================
-=            CUSTOM FUNCTIONS            =
-========================================*/
-function toggleNav() {
-if ($('#site-wrapper').hasClass('show-nav')) {
-  // Do things on Nav Close
-  $('#site-wrapper').removeClass('show-nav');
-} else {
-  // Do things on Nav Open
-  $('#site-wrapper').addClass('show-nav');
-}
-
-//$('#site-wrapper').toggleClass('show-nav');
-}

@@ -3,49 +3,52 @@
 <head>
   <title>Unwind</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
-    <ul class="nav nav-tabs">
-      <li><%= link_to "Home", root_path %></li>
-      <li><%= link_to "Unwind", events_path %></li>
-      <div class="pull-right user-info">
-        <% if user_signed_in? %>
-          <div class="pull-right">
-            <strong><%= link_to current_user.email, user_path(current_user.id), :class => 'navbar-link' %></strong> 
-            | <%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-          </div>
-        <% else %>
-            <%= link_to "Sign In", user_session_path %> or
-            <%= link_to "Sign Up", new_user_registration_path %>
-        <% end %>
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">Unwind</a>
       </div>
-    </ul>
-    <div class = "flash">
-      <% if flash[:notice] %>
-        <div class="alert alert-success">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:notice] %>
-        </div>
-      <% elsif flash.now[:alert] %>
-        <div class="alert alert-danger">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash.now[:alert] %>
-        </div>
-      <% elsif flash[:alert] %>
-        <div class="alert alert-warning">
-          <button type="button" class="close" data-dismiss="alert">&times;</button>
-          <%= flash[:alert] %>
-        </div>
-      <% end %>
+      <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+          <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "Unwind", events_path %></li>
+          <% if user_signed_in? %>
+            <li><%= link_to current_user.email, user_path(current_user.id), :class => 'navbar-link' %></li> 
+            <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete, :class => 'navbar-link' %></li>
+          <% else %> 
+            <li><%= link_to "Sign In", user_session_path %></li>
+            <li><%= link_to "Sign Up", new_user_registration_path %></li>
+          <% end %>
+        </ul>
+      </div>
     </div>
+  </nav>
+  <div class = "flash">
+    <% if flash[:notice] %>
+      <div class="alert alert-success">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:notice] %>
+      </div>
+    <% elsif flash.now[:alert] %>
+      <div class="alert alert-danger">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash.now[:alert] %>
+      </div>
+    <% elsif flash[:alert] %>
+      <div class="alert alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <%= flash[:alert] %>
+      </div>
+    <% end %>
   </div>
-  <div id="site-wrapper">
-  <%= yield %>
-  </div>
-  </div>
+    <div id="site-wrapper">
+      <%= yield %>
+    </div>
+
 </body>
 </html>

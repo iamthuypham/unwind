@@ -1,22 +1,23 @@
-<div class="col-md-2">
+<td>
   <%= activity.date.strftime('%^b %e') %>
-</div>
-<div class="col-md-2">
+</td>
+<td>
   <%= activity.starttime.strftime('%l:%M %P')  %>
-</div>
-<div class="col-md-4">
-  <%= link_to activity.name, event_activity_path(activity.event, activity) %>
-  
-</div>  
-<div class="col-md-3">
-  
+</td>
+<td>
+  <%= link_to activity.name, event_activity_path(activity.event, activity)%>
+</td>  
+<td>
     <% if current_role == 'planner' %>
-      <%= link_to "Edit", edit_event_activity_path(activity.event, activity),  class: 'btn btn-default' %>
-      <%= link_to "Delete", event_activity_path(activity.event, activity), method: :delete, class: 'btn btn-danger' %>
+      <span class='hearts btn btn-default'>
+        <a data-transition="boring"><i class="glyphicon glyphicon-search"></i></a>
+      </span>
+      
+      <%= link_to "", event_activity_path(activity.event, activity), method: :delete, class: 'btn btn-danger glyphicon glyphicon-remove' %>
       <% if activity.completed  %>
         <p class= 'glyphicon glyphicon-ok'></p>
       <% else %>
-        <%= link_to 'Completed', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success' %>
+        <%= link_to '', event_activity_path(activity.event, activity), method: :put, class: 'btn btn-success glyphicon glyphicon-ok' %>
       <% end %>
     <% elsif current_role == 'helper' %> 
       <% if activity.completed  %>
@@ -28,5 +29,5 @@
       Your current role is <%= current_role %>.
       Want to help <%= @event.user.email %> this event?
     <% end %>
-</div>
+</td>
 

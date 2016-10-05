@@ -1,19 +1,19 @@
  <%= form_for [event, activity] do |f| %>
-   <div class="form-group">
-        <div class="col-md-2" >
-          <%= f.label :date, class: 'sr-only' %>
-          <%= f.text_field :date, class: 'form-control', type: 'date', :disabled => event.length == 'One Day' %>
-        </div>
-      <div class="col-md-2">
+   
+      <td>
+        <%= f.label :date, class: 'sr-only' %>
+        <%= f.text_field :date, class: 'form-control', type: 'date', :disabled => event.length == 'One Day' %>
+      </td>
+      <td>
         <%= f.label :starttime, class: 'sr-only'  %>
         <%= f.text_field :starttime, class: 'form-control', placeholder: "Time" %>
-      </div>
-      <div class="col-md-4">
+      </td>
+      <td>
         <%= f.label :name, class: 'sr-only' %>
         <%= f.text_field :name, class: 'form-control', placeholder: "Enter a new activity" %>
-      </div>  
-      <div class="col-md-2">
+      </td>  
+      <td>
         <%= f.submit "Submit", class: 'btn btn-default pull-right' %>
-      </div>
-   </div>
+      </td>
+   
  <% end %>
