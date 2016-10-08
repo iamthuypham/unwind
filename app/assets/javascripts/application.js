@@ -15,9 +15,8 @@
 //= require turbolinks
  //= require bootstrap
 //= require_tree .
-//= require twitter/typeahead
+//= require_tree ./lib
 
-//= require twitter/typeahead.min
 /*global $*/
 /*
 
@@ -52,3 +51,24 @@ $(function() {
   });
 
 });
+
+var datas = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  // `states` is an array of state names defined in "The Basics"
+  local: ['one', 'two', 'three']
+});
+
+$(document).ready(function() {
+  console.log($(".search-input"))
+  $(".search-input").typeahead({
+    minLength: 1,
+    highlight: true,
+    hint: true
+  },
+  {
+    name: 'my-dataset',
+    source: datas
+  });
+});
+
