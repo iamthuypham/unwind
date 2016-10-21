@@ -5,7 +5,9 @@
   <%= activity.starttime.strftime('%l:%M %P')  %>
 </td>
 <td>
-  <%= link_to activity.name, event_activity_path(activity.event, activity)%>
+  <div class="hearts text-center">
+  <a data-transition="boring"><i class="fa fa-heart"></i><span><%= activity.name %></span></a>
+  </div>
 </td>  
 <td>
     <% if current_role == 'planner' %>
