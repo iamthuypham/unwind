@@ -5,15 +5,13 @@
   <%= activity.starttime.strftime('%l:%M %P')  %>
 </td>
 <td>
-  <div class="hearts text-center">
-  <a data-transition="boring"><i class="fa fa-heart"></i><span><%= activity.name %></span></a>
-  </div>
+  <%= activity.name %>
 </td>  
 <td>
     <% if current_role == 'planner' %>
-      <span class='hearts btn btn-default'>
+      <div class='hearts btn btn-default'>
         <a data-transition="boring"><i class="glyphicon glyphicon-search"></i></a>
-      </span>
+      </div>
       
       <%= link_to "", event_activity_path(activity.event, activity), method: :delete, class: 'btn btn-danger glyphicon glyphicon-remove' %>
       <% if activity.completed  %>
