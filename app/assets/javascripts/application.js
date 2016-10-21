@@ -56,13 +56,13 @@ var datas = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,
   queryTokenizer: Bloodhound.tokenizers.whitespace,
   // `states` is an array of state names defined in "The Basics"
-  local: ['one', 'two', 'three']
+  local: ['Weather', 'Hotel', 'Flight']
 });
 
 $(document).ready(function() {
   console.log($(".search-input"))
   $(".search-input").typeahead({
-    minLength: 1,
+    minLength: 0,
     highlight: true,
     hint: true
   },
@@ -71,4 +71,3 @@ $(document).ready(function() {
     source: datas
   });
 });
-
