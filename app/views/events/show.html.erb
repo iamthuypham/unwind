@@ -1,45 +1,56 @@
-<div class="row">
-  <div class="col-md-8">
+<!--Cover-->
+<div class="jumbotron" id="cover-picture">
+  <div class="container text-center" id="cover-text">
     <h1><%= @event.name %></h1>
-    </br>
-    Your current role is <%= current_role %>
-    </br>
-    <% if @event.startdate == @event.enddate %>
-      One-day event </br>
+    <p><% if @event.length == 'One Day' %>
       <%= @event.startdate.strftime('%b %e, %Y') %>
-    <% else %>
+      <% else %>
       <%= @event.startdate.strftime('%b %e, %Y') %> - <%= @event.enddate.strftime('%b %e, %Y') %>
-    <% end %>
-    </br>
-    <strong>Location:</strong>
-    <%= @event.location %>
-    </br>
-    <!--Example weather data -->
-    <div>
-      <strong>Weather:</strong>
-      <p>Summary: <%= @current_weather.summary %></p>
-      <p>Temperature: <%= @current_weather.temperature %></p>
-      <p>Wind Speed: <%= @current_weather.windSpeed %></p>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <% if current_role == 'planner' %>
-      <%= link_to "Delete Event", @event, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this event?' } %>
-      <%= link_to "Edit Event", edit_event_path, class: 'btn btn-default' %>
-    <% end %>
+      <% end %>
+    </p>
+    <p><%= @event.location %></p>
   </div>
 </div>
-<div class="row">
-  <h3>Activities</h3>
-  <% @event.activities.each do |activity| %>
-    <div class="media">
-      <%= render 'activities/activity', activity: activity%>
+
+<div id="site-canvas">
+  <div id="site-menu">
+    <strong>Resource List</strong>
+    <%= hotels_as_json(@hotel_list) %>
+  </div>
+  <div id="activity" class="container">
+    <table id="activity-list-table" class="table table-striped table-bordered">
+      <thead>
+        <th class="col-sm-2">Date</th>
+        <th class="col-sm-2">Time</th>
+        <th class="col-sm-4">Activity Name</th>
+        <th class="col-sm-3">Actions</th>
+      </thead>
+      <tbody>
+        <% @event.activities.each do |activity| %>
+          <tr id="activity-detail-rows">
+            <%= render 'activities/activity', activity: activity%>
+          </tr>
+        <% end %>
+      
+        
+          <% if current_role == 'planner' || current_role == 'helper' %>
+            <tr><%= render 'activities/form', event: @event, activity: Activity.new %></tr>
+          <% end %>  
+        
+      </tbody>
+    </table>
+    
+  </div>
+      <br>
+
+      <div class="row text-center">
+        <% if current_role == 'planner' %>
+            <%= link_to "Delete Event", @event, method: :delete, class: 'btn btn-danger', data: { confirm: 'Are you sure you want to delete this event?' } %>
+            <%= link_to "Edit Event", edit_event_path, class: 'btn btn-default' %>
+          <% end %>
+      </div>
+    
     </div>
-  <% end %>
-  <% if current_role == 'planner' || current_role == 'helper' %>
-    <h3>Add an activity</h3>
-    <div class="media">
-      <%= render 'activities/form', event: @event, activity: Activity.new %>
-    </div>
-  <% end %>
-</div>
+
+  </div>
+

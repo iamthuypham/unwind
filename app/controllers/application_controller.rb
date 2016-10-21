@@ -20,4 +20,5 @@ class ApplicationController < ActionController::Base
     p @role
   end
   helper_method :current_role
+  
 end

@@ -14,7 +14,12 @@ class ActivitiesController < ApplicationController
   def create
     @event = Event.find(params[:event_id])
     @activity = @event.activities.new(activity_params)
-
+    p 'BEFORE DATE'
+    p @activity.date
+    @activity.date = Activity.date?(@activity)
+    p 'AFTER DATE'
+    p @activity.date
+    
     if @activity.save
       flash[:notice] = "Activity was saved successfully."
       redirect_to @activity.event
@@ -53,6 +58,6 @@ class ActivitiesController < ApplicationController
   private
  
   def activity_params
-    params.require(:activity).permit(:name, :starttime, :completed)
+    params.require(:activity).permit(:name, :starttime, :completed, :date)
   end
 end
